@@ -1729,7 +1729,7 @@ namespace Server.Mobiles
                 int record = pm.Skill_Start + pm.Skill_Boost + pm.Skill_Ether;
 
                 if (
-                    (m.Skills.Cap == 13000 || m.Skills.Cap == 18000)
+                    (m.Skills.Cap == 18000 || m.Skills.Cap == 23000)
                     && m.SkillsTotal <= m.Skills.Cap
                 )
                 {
@@ -1737,9 +1737,9 @@ namespace Server.Mobiles
                     {
                         if (record != m.Skills.Cap)
                         {
-                            pm.Skill_Start = 13000;
+                            pm.Skill_Start = 18000;
 
-                            if (m.Skills.Cap == 18000)
+                            if (m.Skills.Cap == 23000)
                             {
                                 pm.Skill_Ether = 5000;
                             }
@@ -1751,9 +1751,9 @@ namespace Server.Mobiles
                     {
                         if (record != m.Skills.Cap)
                         {
-                            pm.Skill_Start = 13000;
+                            pm.Skill_Start = 18000;
 
-                            if (m.Skills.Cap == 18000)
+                            if (m.Skills.Cap == 23000)
                             {
                                 pm.Skill_Ether = 5000;
                             }
@@ -1782,7 +1782,7 @@ namespace Server.Mobiles
                     adjust = false;
                 }
                 else if (
-                    (m.Skills.Cap == 10000 || m.Skills.Cap == 15000)
+                    (m.Skills.Cap == 15000 || m.Skills.Cap == 20000)
                     && m.SkillsTotal <= m.Skills.Cap
                 )
                 {
@@ -1790,9 +1790,9 @@ namespace Server.Mobiles
 
                     if (record != m.Skills.Cap)
                     {
-                        pm.Skill_Start = 10000;
+                        pm.Skill_Start = 15000;
 
-                        if (m.Skills.Cap == 15000)
+                        if (m.Skills.Cap == 20000)
                         {
                             pm.Skill_Ether = 5000;
                         }
@@ -1801,7 +1801,7 @@ namespace Server.Mobiles
                     adjust = false;
                 }
                 else if (
-                    (m.Skills.Cap == 11000 || m.Skills.Cap == 16000)
+                    (m.Skills.Cap == 16000 || m.Skills.Cap == 21000)
                     && m.SkillsTotal <= m.Skills.Cap
                 )
                 {
@@ -1809,9 +1809,9 @@ namespace Server.Mobiles
 
                     if (record != m.Skills.Cap)
                     {
-                        pm.Skill_Start = 11000;
+                        pm.Skill_Start = 16000;
 
-                        if (m.Skills.Cap == 16000)
+                        if (m.Skills.Cap == 21000)
                         {
                             pm.Skill_Ether = 5000;
                         }
@@ -4537,31 +4537,31 @@ namespace Server.Mobiles
                         {
                             SkillBoost = Server.Misc.MyServerSettings.SkillBoost();
 
-                            if (Skills.Cap == 11000)
+                            if (Skills.Cap == 16000)
                             {
-                                SkillStart = 11000;
+                                SkillStart = 16000;
                             }
-                            else if (Skills.Cap == 16000)
+                            else if (Skills.Cap == 21000)
                             {
-                                SkillStart = 11000;
+                                SkillStart = 16000;
                                 SkillEther = 5000;
-                            }
-                            else if (Skills.Cap == 10000)
-                            {
-                                SkillStart = 10000;
                             }
                             else if (Skills.Cap == 15000)
                             {
-                                SkillStart = 10000;
-                                SkillEther = 5000;
+                                SkillStart = 15000;
                             }
-                            else if (Skills.Cap == 13000)
+                            else if (Skills.Cap == 20000)
                             {
-                                SkillStart = 13000;
+                                SkillStart = 15000;
+                                SkillEther = 5000;
                             }
                             else if (Skills.Cap == 18000)
                             {
-                                SkillStart = 13000;
+                                SkillStart = 18000;
+                            }
+                            else if (Skills.Cap == 23000)
+                            {
+                                SkillStart = 18000;
                                 SkillEther = 5000;
                             }
                             else if (Skills.Cap == 40000)
@@ -4575,7 +4575,7 @@ namespace Server.Mobiles
                             }
                             else
                             {
-                                SkillStart = 10000;
+                                SkillStart = 15000;
                                 SkillEther = 0;
                             }
                         }

@@ -622,10 +622,8 @@ namespace Server.Items
 
                 if (onSelf)
                 {
-                    if (Core.AOS)
-                        seconds = 5.0 + (0.5 * ((double)(120 - dex) / 10)); // TODO: Verify algorithm
-                    else
-                        seconds = 9.4 + (0.6 * ((double)(120 - dex) / 10));
+                    if (dex > 120) { dex = 120; }
+                    seconds = 2.0 + (0.5 * ((double)(120 - dex) / 10)); 
                 }
                 else
                 {

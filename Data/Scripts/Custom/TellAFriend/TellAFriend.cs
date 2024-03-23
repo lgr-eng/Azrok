@@ -51,7 +51,7 @@ namespace Server
 
         public static void Initialize()
         {
-            EventSink.Login += new LoginEventHandler(TAFLogin);
+            //EventSink.Login += new LoginEventHandler(TAFLogin);
         }
 
         private static void TAFLogin(LoginEventArgs args)
