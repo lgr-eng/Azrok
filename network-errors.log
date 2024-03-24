@@ -1,0 +1,13 @@
+# 3/20/2024 5:56:56 PM
+System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Shutdown(SocketShutdown how)
+   at Server.Network.NetState.Dispose(Boolean flush)
+
+
+# 3/20/2024 5:56:56 PM
+System.Net.Sockets.SocketException (0x80004005): An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.BeginReceive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags, AsyncCallback callback, Object state)
+   at Server.Network.NetState.InternalBeginReceive()
+   at Server.Network.NetState.Start()
+
+

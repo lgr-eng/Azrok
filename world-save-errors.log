@@ -1,0 +1,23 @@
+3/24/2024 1:19:26 AM	Warning: Attempted to add 0x4001AA51 "BardHit" during world save.
+This action could cause inconsistent state.
+It is strongly advised that the offending scripts be corrected.
+   at Server.Item..ctor()
+   at Server.Items.BardHit..ctor()
+   at Server.Mobiles.TradesmanBard.OnThink()
+   at Server.Mobiles.BaseAI.AITimer.OnTick()
+   at Server.Timer.Slice()
+   at Server.Core.Main(String[] args)
+
+
+3/24/2024 1:19:33 AM	Warning: Attempted to add 0x4001AA6E "Blood" during world save.
+This action could cause inconsistent state.
+It is strongly advised that the offending scripts be corrected.
+   at Server.Item..ctor()
+   at Server.Items.Blood..ctor(Int32 itemID)
+   at Server.Items.ButcherHit.OnDoubleClick(Mobile from)
+   at Server.Mobiles.TradesmanButcher.OnThink()
+   at Server.Mobiles.BaseAI.AITimer.OnTick()
+   at Server.Timer.Slice()
+   at Server.Core.Main(String[] args)
+
+

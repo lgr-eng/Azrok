@@ -1,7 +1,7 @@
 using System;
+using Server.Targeting;
 using Server.Items;
 using Server.Network;
-using Server.Targeting;
 
 namespace Server.Items
 {
@@ -45,11 +45,11 @@ namespace Server.Items
             switch (version)
             {
                 case 1:
-                {
-                    m_CookingLevel = reader.ReadInt();
+                    {
+                        m_CookingLevel = reader.ReadInt();
 
-                    break;
-                }
+                        break;
+                    }
             }
         }
 

@@ -621,7 +621,7 @@ namespace Server.Items
                 double resDelay = (patient.Alive ? 0.0 : 5.0);
 
                 if (onSelf)
-                {
+                {                    
                     if (dex > 120) { dex = 120; }
                     seconds = 2.0 + (0.5 * ((double)(120 - dex) / 10)); 
                 }
