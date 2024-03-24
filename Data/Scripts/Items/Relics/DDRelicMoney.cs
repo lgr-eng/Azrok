@@ -53,7 +53,7 @@ namespace Server.Items
             if (box != null && IsChildOf(box))
             {
                 Delete();
-                int nRate = 10;
+                int nRate = 4;
 
                 int nCoins = this.Amount;
                 int nGold = (int)Math.Floor((decimal)(this.Amount / nRate));
@@ -148,7 +148,7 @@ namespace Server.Items
             if (box != null && IsChildOf(box))
             {
                 Delete();
-                int nRate = 5;
+                int nRate = 2;
 
                 int nCoins = this.Amount;
                 int nGold = (int)Math.Floor((decimal)(this.Amount / nRate));
@@ -237,7 +237,7 @@ namespace Server.Items
             if (box != null && IsChildOf(box))
             {
                 Delete();
-                int nGold = this.Amount * 2;
+                int nGold = this.Amount * 3;
                 from.AddToBackpack(new Gold(nGold));
             }
             else
@@ -307,7 +307,7 @@ namespace Server.Items
             if (box != null && IsChildOf(box))
             {
                 Delete();
-                int nGold = this.Amount * 3;
+                int nGold = this.Amount * 4;
                 from.AddToBackpack(new Gold(nGold));
             }
             else
@@ -376,7 +376,7 @@ namespace Server.Items
             if (box != null && IsChildOf(box))
             {
                 Delete();
-                int nGold = this.Amount * 2;
+                int nGold = this.Amount * 3;
                 from.AddToBackpack(new Gold(nGold));
             }
             else
@@ -445,7 +445,7 @@ namespace Server.Items
             if (box != null && IsChildOf(box))
             {
                 Delete();
-                int nGold = this.Amount;
+                int nGold = this.Amount * 2;
                 from.AddToBackpack(new Gold(nGold));
             }
             else
