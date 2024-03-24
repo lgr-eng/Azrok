@@ -2,5 +2,15 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/Test2/FileContentIndex
-/.vs/Test2/v17
+/.vs/Configtura Fork/FileContentIndex
+/.vs/Configtura Fork/v17
+/Data/Logs/Commands/Owner
+/Data/Logs/Commands
+/.vs/VSWorkspaceState.json
+/.vs
+/Data/Data.bin
+/Data/Data.hash
+/Info/adventures.txt
+/Info/journies.txt
+/Info/online.txt
+/.vs/slnx.sqlite
