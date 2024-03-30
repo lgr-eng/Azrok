@@ -282,7 +282,7 @@ namespace Server.Mobiles
 
         public virtual TimeSpan RestockDelay
         {
-            get { return TimeSpan.FromHours(2); }
+            get { return TimeSpan.FromMinutes(15); }
         }
 
         public virtual TimeSpan RestockDelayFull

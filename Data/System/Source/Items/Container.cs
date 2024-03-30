@@ -1482,7 +1482,7 @@ namespace Server.Items
         }
 
         private static int m_GlobalMaxItems = 125;
-        private static int m_GlobalMaxWeight = 400;
+        private static int m_GlobalMaxWeight = 625;
 
         public static int GlobalMaxItems
         {

@@ -2804,6 +2804,18 @@ namespace Server.Mobiles
 
         public override void OnDamage(int amount, Mobile from, bool willKill)
         {
+            //this.SendMessage("Damage taken = " + amount.ToString());
+
+            //this.LocalOverheadMessage(
+            //                MessageType.Emote,
+            //                0xB1F,
+            //                true,
+            //                "Damage taken = " + amount.ToString() +
+           //                 " From = " + from.ToString() +
+          //                  " Location = " + this.Location +
+          //                  " Map = " + Server.Misc.Worlds.GetRegionName(this.Map, this.Location)
+          //              );
+
             int disruptThreshold;
 
             if (!Core.AOS)
