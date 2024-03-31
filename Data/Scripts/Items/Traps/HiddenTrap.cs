@@ -257,103 +257,103 @@ namespace Server.Items
                         }
                         sTrapType = textLog;
                     }
-                    else if (nTrapType == 4 && SavingThrow(m, "Magic", true) == false) // LOSE ITEM TRAP
-                    {
-                        textSay = "A trap triggered, almost ruining one of your protected items!";
-                        textLog = "a destructive trap";
+                    //else if (nTrapType == 4 && SavingThrow(m, "Magic", true) == false) // LOSE ITEM TRAP
+                    //{
+                    //    textSay = "A trap triggered, almost ruining one of your protected items!";
+                    //    textLog = "a destructive trap";
 
-                        if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
-                        {
-                            textSay =
-                                "You stepped over a molecular oxidizer, almost ruining one of your protected items!";
-                            textLog = "a molecular oxidizer";
-                        }
+                    //    if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
+                    //    {
+                    //        textSay =
+                    //            "You stepped over a molecular oxidizer, almost ruining one of your protected items!";
+                    //        textLog = "a molecular oxidizer";
+                    //    }
 
-                        Container cont = m.Backpack;
-                        Item iRuined = GetMyItem(m);
+                    //    Container cont = m.Backpack;
+                    //    Item iRuined = GetMyItem(m);
 
-                        if (iRuined != null)
-                        {
-                            if (Mobile.InsuranceEnabled && CheckInsuranceOnTrap(iRuined, m))
-                            {
-                                m.LocalOverheadMessage(MessageType.Emote, 1150, true, textSay);
-                            }
-                            else
-                            {
-                                textSay = "A trap triggered, rusting one of your equipped items!";
+                    //    if (iRuined != null)
+                    //    {
+                    //        if (Mobile.InsuranceEnabled && CheckInsuranceOnTrap(iRuined, m))
+                    //        {
+                    //            m.LocalOverheadMessage(MessageType.Emote, 1150, true, textSay);
+                    //        }
+                    //        else
+                    //        {
+                    //            textSay = "A trap triggered, rusting one of your equipped items!";
 
-                                if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
-                                {
-                                    textSay =
-                                        "You stepped over a molecular oxidizer, rusting one of your equipped items!";
-                                }
+                    //            if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
+                    //            {
+                    //                textSay =
+                    //                    "You stepped over a molecular oxidizer, rusting one of your equipped items!";
+                    //            }
 
-                                int Rusted = 0;
-                                if (iRuined is BaseWeapon)
-                                {
-                                    BaseWeapon iRusted = (BaseWeapon)iRuined;
+                    //            int Rusted = 0;
+                    //            if (iRuined is BaseWeapon)
+                    //            {
+                    //                BaseWeapon iRusted = (BaseWeapon)iRuined;
 
-                                    if (Server.Misc.MaterialInfo.IsAnyKindOfMetalItem(iRuined))
-                                    {
-                                        m.LocalOverheadMessage(
-                                            MessageType.Emote,
-                                            0xB1F,
-                                            true,
-                                            textSay
-                                        );
-                                        RustyJunk broke = new RustyJunk();
-                                        broke.ItemID = iRuined.GraphicID;
-                                        broke.Name = "rusted item";
-                                        broke.Weight = iRuined.Weight;
-                                        m.AddToBackpack(broke);
-                                        Rusted = 1;
-                                    }
-                                }
-                                if (iRuined is BaseArmor)
-                                {
-                                    BaseArmor iRusted = (BaseArmor)iRuined;
+                    //                if (Server.Misc.MaterialInfo.IsAnyKindOfMetalItem(iRuined))
+                    //                {
+                    //                    m.LocalOverheadMessage(
+                    //                        MessageType.Emote,
+                    //                        0xB1F,
+                    //                        true,
+                    //                        textSay
+                    //                    );
+                    //                    RustyJunk broke = new RustyJunk();
+                    //                    broke.ItemID = iRuined.GraphicID;
+                    //                    broke.Name = "rusted item";
+                    //                    broke.Weight = iRuined.Weight;
+                    //                    m.AddToBackpack(broke);
+                    //                    Rusted = 1;
+                    //                }
+                    //            }
+                    //            if (iRuined is BaseArmor)
+                    //            {
+                    //                BaseArmor iRusted = (BaseArmor)iRuined;
 
-                                    if (Server.Misc.MaterialInfo.IsAnyKindOfMetalItem(iRuined))
-                                    {
-                                        m.LocalOverheadMessage(
-                                            MessageType.Emote,
-                                            0xB1F,
-                                            true,
-                                            textSay
-                                        );
-                                        RustyJunk broke = new RustyJunk();
-                                        broke.ItemID = iRuined.ItemID;
-                                        broke.Name = "rusted item";
-                                        broke.Weight = Utility.RandomMinMax(1, 4);
-                                        m.AddToBackpack(broke);
-                                        Rusted = 1;
-                                    }
-                                }
-                                if (Rusted == 0)
-                                {
-                                    textSay =
-                                        "A trap triggered, ruining one of your equipped items!";
+                    //                if (Server.Misc.MaterialInfo.IsAnyKindOfMetalItem(iRuined))
+                    //                {
+                    //                    m.LocalOverheadMessage(
+                    //                        MessageType.Emote,
+                    //                        0xB1F,
+                    //                        true,
+                    //                        textSay
+                    //                    );
+                    //                    RustyJunk broke = new RustyJunk();
+                    //                    broke.ItemID = iRuined.ItemID;
+                    //                    broke.Name = "rusted item";
+                    //                    broke.Weight = Utility.RandomMinMax(1, 4);
+                    //                    m.AddToBackpack(broke);
+                    //                    Rusted = 1;
+                    //                }
+                    //            }
+                    //            if (Rusted == 0)
+                    //            {
+                    //                textSay =
+                    //                    "A trap triggered, ruining one of your equipped items!";
 
-                                    if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
-                                    {
-                                        textSay =
-                                            "You stepped over a molecular oxidizer, ruining one of your equipped items!";
-                                    }
+                    //                if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
+                    //                {
+                    //                    textSay =
+                    //                        "You stepped over a molecular oxidizer, ruining one of your equipped items!";
+                    //                }
 
-                                    m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
-                                    BrokenGear broke = new BrokenGear();
-                                    broke.ItemID = iRuined.ItemID;
-                                    broke.Name = "Ruined Item";
-                                    broke.Weight = iRuined.Weight;
-                                    m.AddToBackpack(broke);
-                                }
-                                iRuined.Delete();
-                            }
-                            m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Waist);
-                            m.PlaySound(0x1E1);
-                            sTrapType = textLog;
-                        }
-                    }
+                    //                m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+                    //                BrokenGear broke = new BrokenGear();
+                    //                broke.ItemID = iRuined.ItemID;
+                    //                broke.Name = "Ruined Item";
+                    //                broke.Weight = iRuined.Weight;
+                    //                m.AddToBackpack(broke);
+                    //            }
+                    //            iRuined.Delete();
+                    //        }
+                    //        m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Waist);
+                    //        m.PlaySound(0x1E1);
+                    //        sTrapType = textLog;
+                    //    }
+                    //}
                     else if (nTrapType == 5 && SavingThrow(m, "Magic", true) == false) // LOSE A STAT TRAP
                     {
                         int nStat = Utility.RandomMinMax(1, 3);
@@ -671,82 +671,82 @@ namespace Server.Items
                             sTrapType = textLog;
                         }
                     }
-                    else if (nTrapType == 10 && SavingThrow(m, "Magic", true) == false) // BOOK BOUND TRAP
-                    {
-                        Container cont = m.Backpack;
-                        int nDull = 0;
+                    //else if (nTrapType == 10 && SavingThrow(m, "Magic", true) == false) // BOOK BOUND TRAP
+                    //{
+                    //    Container cont = m.Backpack;
+                    //    int nDull = 0;
 
-                        List<Item> items = new List<Item>();
+                    //    List<Item> items = new List<Item>();
 
-                        Item handy = m.FindItemOnLayer(Layer.OneHanded);
-                        if (handy is Spellbook)
-                        {
-                            items.Add(handy);
-                            nDull = 1;
-                        }
+                    //    Item handy = m.FindItemOnLayer(Layer.OneHanded);
+                    //    if (handy is Spellbook)
+                    //    {
+                    //        items.Add(handy);
+                    //        nDull = 1;
+                    //    }
 
-                        Item tally = m.FindItemOnLayer(Layer.Talisman);
-                        if (tally is Spellbook)
-                        {
-                            items.Add(tally);
-                            nDull = 1;
-                        }
+                    //    Item tally = m.FindItemOnLayer(Layer.Talisman);
+                    //    if (tally is Spellbook)
+                    //    {
+                    //        items.Add(tally);
+                    //        nDull = 1;
+                    //    }
 
-                        foreach (Item i in m.Backpack.FindItemsByType(typeof(Spellbook), true))
-                        {
-                            if (i.Parent is BookBox) { }
-                            else
-                            {
-                                if (i.LootType != LootType.Blessed)
-                                {
-                                    if (CheckInsuranceOnTrap(i, m))
-                                    {
-                                        m.LocalOverheadMessage(
-                                            MessageType.Emote,
-                                            1150,
-                                            true,
-                                            "One of your books was almost magically bound!"
-                                        );
-                                    }
-                                    else
-                                    {
-                                        items.Add(i);
-                                        nDull = 1;
-                                    }
-                                }
-                            }
-                        }
-                        foreach (Item i in m.Backpack.FindItemsByType(typeof(Runebook), true))
-                        {
-                            if (i.Parent is BookBox) { }
-                            else
-                            {
-                                items.Add(i);
-                                nDull = 1;
-                            }
-                        }
+                    //    foreach (Item i in m.Backpack.FindItemsByType(typeof(Spellbook), true))
+                    //    {
+                    //        if (i.Parent is BookBox) { }
+                    //        else
+                    //        {
+                    //            if (i.LootType != LootType.Blessed)
+                    //            {
+                    //                if (CheckInsuranceOnTrap(i, m))
+                    //                {
+                    //                    m.LocalOverheadMessage(
+                    //                        MessageType.Emote,
+                    //                        1150,
+                    //                        true,
+                    //                        "One of your books was almost magically bound!"
+                    //                    );
+                    //                }
+                    //                else
+                    //                {
+                    //                    items.Add(i);
+                    //                    nDull = 1;
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //    foreach (Item i in m.Backpack.FindItemsByType(typeof(Runebook), true))
+                    //    {
+                    //        if (i.Parent is BookBox) { }
+                    //        else
+                    //        {
+                    //            items.Add(i);
+                    //            nDull = 1;
+                    //        }
+                    //    }
 
-                        if (nDull > 0)
-                        {
-                            Container box = new BookBox();
-                            foreach (Item item in items)
-                            {
-                                box.DropItem(item);
-                            }
+                    //    if (nDull > 0)
+                    //    {
+                    //        Container box = new BookBox();
+                    //        foreach (Item item in items)
+                    //        {
+                    //            box.DropItem(item);
+                    //        }
 
-                            m.AddToBackpack(box);
+                    //        m.AddToBackpack(box);
 
-                            m.LocalOverheadMessage(
-                                MessageType.Emote,
-                                0xB1F,
-                                true,
-                                "A trap triggered, locking your books in a magic box!"
-                            );
-                            m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Waist);
-                            m.PlaySound(0x1E1);
-                            sTrapType = "a book bound trap";
-                        }
-                    }
+                    //        m.LocalOverheadMessage(
+                    //            MessageType.Emote,
+                    //            0xB1F,
+                    //            true,
+                    //            "A trap triggered, locking your books in a magic box!"
+                    //        );
+                    //        m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Waist);
+                    //        m.PlaySound(0x1E1);
+                    //        sTrapType = "a book bound trap";
+                    //    }
+                    //}
                     else if (nTrapType == 11 && SavingThrow(m, "Magic", true) == false) // TELEPORT TRAP
                     {
                         textSay = "A trap triggered, teleporting you away from here!";
@@ -772,70 +772,70 @@ namespace Server.Items
                             sTrapType = textLog;
                         }
                     }
-                    else if (
-                        nTrapType == 12
-                        && SavingThrow(m, "Magic", true) == false
-                        && m.Fame > 0
-                    ) // FAME TRAP
-                    {
-                        int FameLoss = (int)(m.Fame - (m.Fame * 0.20));
-                        if (FameLoss < 0)
-                        {
-                            FameLoss = 0;
-                        }
-                        if (FameLoss > 0)
-                        {
-                            m.Fame = FameLoss;
-                            m.LocalOverheadMessage(
-                                MessageType.Emote,
-                                0xB1F,
-                                true,
-                                "A trap triggered, causing some of your deeds to be forgotten!"
-                            );
-                            m.FixedParticles(0x374A, 10, 15, 5032, EffectLayer.Head);
-                            m.PlaySound(0x1F8);
-                            sTrapType = "a forgotten fame trap";
-                        }
-                    }
-                    else if (nTrapType == 13 && SavingThrow(m, "Magic", true) == false) // CURSE ITEM TRAP
-                    {
-                        Container cont = m.Backpack;
-                        Item iCursed = GetMyItem(m);
+                    //else if (
+                    //    nTrapType == 12
+                    //    && SavingThrow(m, "Magic", true) == false
+                    //    && m.Fame > 0
+                    //) // FAME TRAP
+                    //{
+                    //    int FameLoss = (int)(m.Fame - (m.Fame * 0.20));
+                    //    if (FameLoss < 0)
+                    //    {
+                    //        FameLoss = 0;
+                    //    }
+                    //    if (FameLoss > 0)
+                    //    {
+                    //        m.Fame = FameLoss;
+                    //        m.LocalOverheadMessage(
+                    //            MessageType.Emote,
+                    //            0xB1F,
+                    //            true,
+                    //            "A trap triggered, causing some of your deeds to be forgotten!"
+                    //        );
+                    //        m.FixedParticles(0x374A, 10, 15, 5032, EffectLayer.Head);
+                    //        m.PlaySound(0x1F8);
+                    //        sTrapType = "a forgotten fame trap";
+                    //    }
+                    //}
+                    //else if (nTrapType == 13 && SavingThrow(m, "Magic", true) == false) // CURSE ITEM TRAP
+                    //{
+                    //    Container cont = m.Backpack;
+                    //    Item iCursed = GetMyItem(m);
 
-                        if (iCursed != null)
-                        {
-                            if (Mobile.InsuranceEnabled && CheckInsuranceOnTrap(iCursed, m))
-                            {
-                                m.LocalOverheadMessage(
-                                    MessageType.Emote,
-                                    1150,
-                                    true,
-                                    "One of your protected items was almost cursed!"
-                                );
-                            }
-                            else
-                            {
-                                m.LocalOverheadMessage(
-                                    MessageType.Emote,
-                                    0xB1F,
-                                    true,
-                                    "A trap triggered, putting a curse on one of your equipped items!"
-                                );
-                                m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Waist);
-                                m.PlaySound(0x1E1);
+                    //    if (iCursed != null)
+                    //    {
+                    //        if (Mobile.InsuranceEnabled && CheckInsuranceOnTrap(iCursed, m))
+                    //        {
+                    //            m.LocalOverheadMessage(
+                    //                MessageType.Emote,
+                    //                1150,
+                    //                true,
+                    //                "One of your protected items was almost cursed!"
+                    //            );
+                    //        }
+                    //        else
+                    //        {
+                    //            m.LocalOverheadMessage(
+                    //                MessageType.Emote,
+                    //                0xB1F,
+                    //                true,
+                    //                "A trap triggered, putting a curse on one of your equipped items!"
+                    //            );
+                    //            m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Waist);
+                    //            m.PlaySound(0x1E1);
 
-                                Container box = new CurseItem();
-                                box.DropItem(iCursed);
-                                box.ItemID = iCursed.GraphicID;
-                                box.Hue = iCursed.GraphicHue;
-                                box.Name = "Cursed Item";
+                    //            Container box = new CurseItem();
+                    //            box.DropItem(iCursed);
+                    //            box.ItemID = iCursed.GraphicID;
+                    //            box.Hue = iCursed.GraphicHue;
+                    //            box.Name = "Cursed Item";
 
-                                m.AddToBackpack(box);
+                    //            m.AddToBackpack(box);
 
-                                sTrapType = "a curse item trap";
-                            }
-                        }
-                    }
+                    //            sTrapType = "a curse item trap";
+                    //        }
+                    //    }
+                    //}
                     else if (nTrapType == 14 && SavingThrow(m, "Physical", true) == false) // FLOOR SPIKE TRAP
                     {
                         if (Utility.RandomMinMax(1, 2) == 1)
@@ -995,69 +995,69 @@ namespace Server.Items
                         m.Damage(itHurts, m);
                         sTrapType = textLog;
                     }
-                    else if (nTrapType == 20 && SavingThrow(m, "Agility", true) == false) // TRIP WIRE THAT BREAKS ARROWS
-                    {
-                        List<Item> items = new List<Item>();
-                        int nBroken = 0;
-                        int WhichArrows = Utility.RandomMinMax(1, 2);
-                        string sTripped = "";
-                        int nAmount = 0;
+                    //else if (nTrapType == 20 && SavingThrow(m, "Agility", true) == false) // TRIP WIRE THAT BREAKS ARROWS
+                    //{
+                    //    List<Item> items = new List<Item>();
+                    //    int nBroken = 0;
+                    //    int WhichArrows = Utility.RandomMinMax(1, 2);
+                    //    string sTripped = "";
+                    //    int nAmount = 0;
 
-                        if (WhichArrows == 1)
-                        {
-                            foreach (Item i in m.Backpack.FindItemsByType(typeof(Arrow), true))
-                            {
-                                items.Add(i);
-                                nBroken = 1;
-                                sTripped = "arrows";
-                            }
-                        }
-                        else
-                        {
-                            foreach (Item i in m.Backpack.FindItemsByType(typeof(Bolt), true))
-                            {
-                                items.Add(i);
-                                nBroken = 1;
-                                sTripped = "crossbow bolts";
-                            }
-                        }
-                        if (nBroken > 0)
-                        {
-                            foreach (Item item in items)
-                            {
-                                if (item != null)
-                                {
-                                    nAmount = nAmount + item.Amount;
-                                    item.Delete();
-                                }
-                            }
-                            if (nAmount > 0)
-                            {
-                                textSay =
-                                    "You tripped over a wire and broke all of your "
-                                    + sTripped
-                                    + "!";
-                                textLog = "a trip wire trap";
+                    //    if (WhichArrows == 1)
+                    //    {
+                    //        foreach (Item i in m.Backpack.FindItemsByType(typeof(Arrow), true))
+                    //        {
+                    //            items.Add(i);
+                    //            nBroken = 1;
+                    //            sTripped = "arrows";
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        foreach (Item i in m.Backpack.FindItemsByType(typeof(Bolt), true))
+                    //        {
+                    //            items.Add(i);
+                    //            nBroken = 1;
+                    //            sTripped = "crossbow bolts";
+                    //        }
+                    //    }
+                    //    if (nBroken > 0)
+                    //    {
+                    //        foreach (Item item in items)
+                    //        {
+                    //            if (item != null)
+                    //            {
+                    //                nAmount = nAmount + item.Amount;
+                    //                item.Delete();
+                    //            }
+                    //        }
+                    //        if (nAmount > 0)
+                    //        {
+                    //            textSay =
+                    //                "You tripped over a wire and broke all of your "
+                    //                + sTripped
+                    //                + "!";
+                    //            textLog = "a trip wire trap";
 
-                                if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
-                                {
-                                    textSay =
-                                        "You tripped over a loose deck plate and broke all of your "
-                                        + sTripped
-                                        + "!";
-                                    textLog = "a loose deck plate";
-                                }
+                    //            if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
+                    //            {
+                    //                textSay =
+                    //                    "You tripped over a loose deck plate and broke all of your "
+                    //                    + sTripped
+                    //                    + "!";
+                    //                textLog = "a loose deck plate";
+                    //            }
 
-                                Shaft wood = new Shaft();
-                                wood.Amount = nAmount;
-                                m.AddToBackpack(wood);
+                    //            Shaft wood = new Shaft();
+                    //            wood.Amount = nAmount;
+                    //            m.AddToBackpack(wood);
 
-                                m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
-                                m.PlaySound(m.Female ? 812 : 1086);
-                                sTrapType = textLog;
-                            }
-                        }
-                    }
+                    //            m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+                    //            m.PlaySound(m.Female ? 812 : 1086);
+                    //            sTrapType = textLog;
+                    //        }
+                    //    }
+                    //}
                     else if (nTrapType == 21 && SavingThrow(m, "Poison", true) == false) // TAINTED TRAP
                     {
                         List<Item> items = new List<Item>();
@@ -1106,148 +1106,148 @@ namespace Server.Items
                             sTrapType = "a noxious cloud trap";
                         }
                     }
-                    else if (nTrapType == 22 && SavingThrow(m, "Agility", true) == false) // TRIP WIRE THAT BREAKS POTIONS
-                    {
-                        List<Item> items = new List<Item>();
-                        int nBroken = 0;
+                    //else if (nTrapType == 22 && SavingThrow(m, "Agility", true) == false) // TRIP WIRE THAT BREAKS POTIONS
+                    //{
+                    //    List<Item> items = new List<Item>();
+                    //    int nBroken = 0;
 
-                        foreach (Item i in m.Backpack.Items)
-                        {
-                            if (Server.Misc.MaterialInfo.IsPotion(i))
-                            {
-                                items.Add(i);
-                                nBroken = 1;
-                            }
-                        }
+                    //    foreach (Item i in m.Backpack.Items)
+                    //    {
+                    //        if (Server.Misc.MaterialInfo.IsPotion(i))
+                    //        {
+                    //            items.Add(i);
+                    //            nBroken = 1;
+                    //        }
+                    //    }
 
-                        foreach (Item item in items)
-                        {
-                            if (item != null)
-                                item.Delete();
-                        }
-                        if (nBroken > 0)
-                        {
-                            textSay =
-                                "You tripped over a wire and broke all of your potion bottles!";
-                            textLog = "a trip wire trap";
+                    //    foreach (Item item in items)
+                    //    {
+                    //        if (item != null)
+                    //            item.Delete();
+                    //    }
+                    //    if (nBroken > 0)
+                    //    {
+                    //        textSay =
+                    //            "You tripped over a wire and broke all of your potion bottles!";
+                    //        textLog = "a trip wire trap";
 
-                            if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
-                            {
-                                textSay =
-                                    "You tripped over a loose deck plate and broke all of your potion bottles!";
-                                textLog = "a loose deck plate";
-                            }
+                    //        if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
+                    //        {
+                    //            textSay =
+                    //                "You tripped over a loose deck plate and broke all of your potion bottles!";
+                    //            textLog = "a loose deck plate";
+                    //        }
 
-                            m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
-                            m.PlaySound(0x040);
-                            sTrapType = textLog;
-                        }
-                    }
-                    else if (nTrapType == 23 && SavingThrow(m, "Magic", true) == false) // MELT JEWELS TRAP
-                    {
-                        int puddle = 0;
+                    //        m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+                    //        m.PlaySound(0x040);
+                    //        sTrapType = textLog;
+                    //    }
+                    //}
+                    //else if (nTrapType == 23 && SavingThrow(m, "Magic", true) == false) // MELT JEWELS TRAP
+                    //{
+                    //    int puddle = 0;
 
-                        List<Item> jewelry = new List<Item>();
-                        foreach (Item j in m.Backpack.Items)
-                        {
-                            if (j is BaseJewel && IsJewelryItem(j))
-                            {
-                                if (j.LootType != LootType.Blessed)
-                                    jewelry.Add(j);
-                            }
-                        }
+                    //    List<Item> jewelry = new List<Item>();
+                    //    foreach (Item j in m.Backpack.Items)
+                    //    {
+                    //        if (j is BaseJewel && IsJewelryItem(j))
+                    //        {
+                    //            if (j.LootType != LootType.Blessed)
+                    //                jewelry.Add(j);
+                    //        }
+                    //    }
 
-                        Item jw;
+                    //    Item jw;
 
-                        if (m.FindItemOnLayer(Layer.Bracelet) != null)
-                        {
-                            jw = m.FindItemOnLayer(Layer.Bracelet);
-                            if (
-                                jw.LootType != LootType.Blessed
-                                && jw is BaseJewel
-                                && IsJewelryItem(jw)
-                            )
-                            {
-                                jewelry.Add(jw);
-                            }
-                        }
-                        if (m.FindItemOnLayer(Layer.Ring) != null)
-                        {
-                            jw = m.FindItemOnLayer(Layer.Ring);
-                            if (
-                                jw.LootType != LootType.Blessed
-                                && jw is BaseJewel
-                                && IsJewelryItem(jw)
-                            )
-                            {
-                                jewelry.Add(jw);
-                            }
-                        }
-                        if (m.FindItemOnLayer(Layer.Helm) != null)
-                        {
-                            jw = m.FindItemOnLayer(Layer.Helm);
-                            if (
-                                jw.LootType != LootType.Blessed
-                                && jw is BaseJewel
-                                && IsJewelryItem(jw)
-                            )
-                            {
-                                jewelry.Add(jw);
-                            }
-                        }
-                        if (m.FindItemOnLayer(Layer.Neck) != null)
-                        {
-                            jw = m.FindItemOnLayer(Layer.Neck);
-                            if (
-                                jw.LootType != LootType.Blessed
-                                && jw is BaseJewel
-                                && IsJewelryItem(jw)
-                            )
-                            {
-                                jewelry.Add(jw);
-                            }
-                        }
-                        if (m.FindItemOnLayer(Layer.Earrings) != null)
-                        {
-                            jw = m.FindItemOnLayer(Layer.Earrings);
-                            if (
-                                jw.LootType != LootType.Blessed
-                                && jw is BaseJewel
-                                && IsJewelryItem(jw)
-                            )
-                            {
-                                jewelry.Add(jw);
-                            }
-                        }
+                    //    if (m.FindItemOnLayer(Layer.Bracelet) != null)
+                    //    {
+                    //        jw = m.FindItemOnLayer(Layer.Bracelet);
+                    //        if (
+                    //            jw.LootType != LootType.Blessed
+                    //            && jw is BaseJewel
+                    //            && IsJewelryItem(jw)
+                    //        )
+                    //        {
+                    //            jewelry.Add(jw);
+                    //        }
+                    //    }
+                    //    if (m.FindItemOnLayer(Layer.Ring) != null)
+                    //    {
+                    //        jw = m.FindItemOnLayer(Layer.Ring);
+                    //        if (
+                    //            jw.LootType != LootType.Blessed
+                    //            && jw is BaseJewel
+                    //            && IsJewelryItem(jw)
+                    //        )
+                    //        {
+                    //            jewelry.Add(jw);
+                    //        }
+                    //    }
+                    //    if (m.FindItemOnLayer(Layer.Helm) != null)
+                    //    {
+                    //        jw = m.FindItemOnLayer(Layer.Helm);
+                    //        if (
+                    //            jw.LootType != LootType.Blessed
+                    //            && jw is BaseJewel
+                    //            && IsJewelryItem(jw)
+                    //        )
+                    //        {
+                    //            jewelry.Add(jw);
+                    //        }
+                    //    }
+                    //    if (m.FindItemOnLayer(Layer.Neck) != null)
+                    //    {
+                    //        jw = m.FindItemOnLayer(Layer.Neck);
+                    //        if (
+                    //            jw.LootType != LootType.Blessed
+                    //            && jw is BaseJewel
+                    //            && IsJewelryItem(jw)
+                    //        )
+                    //        {
+                    //            jewelry.Add(jw);
+                    //        }
+                    //    }
+                    //    if (m.FindItemOnLayer(Layer.Earrings) != null)
+                    //    {
+                    //        jw = m.FindItemOnLayer(Layer.Earrings);
+                    //        if (
+                    //            jw.LootType != LootType.Blessed
+                    //            && jw is BaseJewel
+                    //            && IsJewelryItem(jw)
+                    //        )
+                    //        {
+                    //            jewelry.Add(jw);
+                    //        }
+                    //    }
 
-                        foreach (Item jl in jewelry)
-                        {
-                            jl.Delete();
-                            puddle++;
-                        }
+                    //    foreach (Item jl in jewelry)
+                    //    {
+                    //        jl.Delete();
+                    //        puddle++;
+                    //    }
 
-                        if (puddle > 0)
-                        {
-                            textSay = "A trap triggered, melting all of your jewelry!";
-                            textLog = "a jewelry melting trap";
+                    //    if (puddle > 0)
+                    //    {
+                    //        textSay = "A trap triggered, melting all of your jewelry!";
+                    //        textLog = "a jewelry melting trap";
 
-                            if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
-                            {
-                                textSay =
-                                    "You stepped over an exposed power relay, melting all of your jewelry!";
-                                textLog = "an exposed power relay";
-                            }
+                    //        if (Server.Misc.Worlds.IsOnSpaceship(m.Location, m.Map))
+                    //        {
+                    //            textSay =
+                    //                "You stepped over an exposed power relay, melting all of your jewelry!";
+                    //            textLog = "an exposed power relay";
+                    //        }
 
-                            m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
-                            RustyJunk broke = new RustyJunk();
-                            broke.ItemID = 0x122A;
-                            broke.Name = "melted jewelry";
-                            broke.Hue = 0x9C4;
-                            broke.Weight = puddle;
-                            m.AddToBackpack(broke);
-                            sTrapType = textLog;
-                        }
-                    }
+                    //        m.LocalOverheadMessage(MessageType.Emote, 0xB1F, true, textSay);
+                    //        RustyJunk broke = new RustyJunk();
+                    //        broke.ItemID = 0x122A;
+                    //        broke.Name = "melted jewelry";
+                    //        broke.Hue = 0x9C4;
+                    //        broke.Weight = puddle;
+                    //        m.AddToBackpack(broke);
+                    //        sTrapType = textLog;
+                    //    }
+                    //}
                     else if (nTrapType == 24 && SavingThrow(m, "Agility", true) == false) // PIT TRAP
                     {
                         textSay = "A fall into a deep pit!";
