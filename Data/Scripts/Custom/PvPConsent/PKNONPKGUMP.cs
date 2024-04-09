@@ -19,7 +19,7 @@ namespace Server.Gumps
             AddPage(0);
             this.AddBackground(0, 0, 400, 300, 9200);
             this.AddAlphaRegion(5, 5, 389, 289);
-            AddLabel(100, 20, 62, @"Confictura Consensual PvP System");
+            AddLabel(100, 20, 62, @"Vallum Ignis Consensual PvP System");
             AddLabel(75, 40, 62, @"Welcome. You may choose to flag yourself");
             AddLabel(90, 60, 62, @"for PvP or for PvE only. Or you may");
             AddLabel(98, 80, 62, @"close this window to remain neutral.");
