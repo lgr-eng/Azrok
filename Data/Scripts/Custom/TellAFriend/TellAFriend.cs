@@ -44,7 +44,7 @@ namespace Server
         public static readonly DateTime age = DateTime.Now - TimeSpan.FromDays(7.0);
 
         // Edit Shard Name
-        public static readonly string TAFShardName = "Confictura: Legend & Adventure";
+        public static readonly string TAFShardName = "Vallum Ignis";
 
         // Should referals be limited by Unique IP?
         public static readonly bool checkIP = true;

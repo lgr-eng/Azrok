@@ -2,7 +2,7 @@
  * File: CloneOfflinePlayerCharacters.cs
  * Version: 1.0
  * Author: Nephtan
- * Shard: Confictura - Legend & Adventure
+ * Shard: Vallum Ignis
  * Description: A class for cloning player characters on logout
  * Special Thanks: Felladrin and Quick_silver for their ideas, methods, and logic included within.
  *************************************************************/

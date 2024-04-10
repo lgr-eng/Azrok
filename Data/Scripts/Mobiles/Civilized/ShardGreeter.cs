@@ -172,7 +172,7 @@ namespace Server.Gumps
             AddImage(0, 0, 2610, Server.Misc.PlayerSettings.GetGumpHue(from));
 
             int header = 11474;
-            if (MyServerSettings.ServerName() == "Confictura - Test")
+            if (MyServerSettings.ServerName() == "Vallum Ignis")
             {
                 header = 11377;
             }
@@ -444,7 +444,7 @@ namespace Server.Gumps
             else
             {
                 int header = 11473;
-                if (MyServerSettings.ServerName() == "Confictura - Test")
+                if (MyServerSettings.ServerName() == "Vallum Ignis")
                 {
                     header = 11376;
                 }

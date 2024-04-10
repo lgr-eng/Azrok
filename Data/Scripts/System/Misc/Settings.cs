@@ -1476,7 +1476,7 @@ namespace Server.Misc
 
         public static string ServerName()
         {
-            return "Confictura: Legend & Adventure";
+            return "Vallum Ignis";
         }
 
         public static string Version()
