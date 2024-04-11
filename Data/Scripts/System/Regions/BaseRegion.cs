@@ -252,7 +252,7 @@ namespace Server.Regions
                     }
                 }
 
-                PlayerMobile.SkillVerification(m);
+                //PlayerMobile.SkillVerification(m);
             }
         }
 
