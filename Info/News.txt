@@ -13,4 +13,4 @@ I am testing server updates:
 - **Update 3:** This is another update.
 
 If you can read this, I probably managed to set up github like I wanted.
-**Azrok**
+Azrok
