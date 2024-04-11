@@ -1,3 +1,18 @@
+[*]April 10th, 2024
+Azrok
+Announcements:
+
+**This is a second test**
+
+I am testing server updates, yet again, but this time it should be the last test:
+
+- **Update 1:** This is a test
+
+- **Update 2:** This is also an test
+
+If you can read this, the github is finally set up like I want and updates should work better now.
+Azrok
+
 [*]April 09th, 2024
 Azrok
 Announcements:
