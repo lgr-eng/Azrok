@@ -264,7 +264,7 @@
 
 // If true, then co-owners of houses will have the same permissions as owners. The security choice gump will then specify this dual ownership when choosing an item security level. The default setting is false, where co-owners have much more limited permissions as the standard game allows.
 
-<setting>false</setting>
+<setting>true</setting>
 
 // When true (default setting), characters can use lawn tools (from architects) to add items to the outside of their home like trees, shrubs, fences, lave, water, and other items. Lawn tools require an amount of gold to place items. If this was previously true and characters placed lawn items, and then you set it to false, the lawn items will refund the gold back to the character's bank box and the lawn tools will be removed from the game.
 
