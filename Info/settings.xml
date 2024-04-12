@@ -20,7 +20,7 @@
 
 // The percent chance a floor trap will trigger in whole number format and no less than 5 percent.
 
-<setting>20</setting>
+<setting>10</setting>
 
 // The percent chance an item will be unidentified and no less than 10 percent.
 
@@ -32,7 +32,7 @@
 
 // You can increase the rate that stats gain from 50.0 (slow) to 10.0 (fast).
 
-<setting>33.3</setting>
+<setting>20.0</setting>
 
 // How many minutes between stat gains which helps with the above setting.
 
@@ -40,19 +40,19 @@
 
 // How many minutes between stat gains for pets that you can train. This can be between 1.0 to 60.0 minutes.
 
-<setting>5.0</setting>
+<setting>1.0</setting>
 
 // The amount of minutes before you can take a bulletin board quest after finishing one.
 
-<setting>60</setting>
+<setting>15</setting>
 
 // The amount of minutes before you can take a sage artifact quest after finishing one.
 
-<setting>8640</setting>
+<setting>4320</setting>
 
 // The percent of gold you get from creatures, treasure, cargo, museum searches, shoppes, and some quests between 5 (low) to 100 (high).
 
-<setting>25</setting>
+<setting>75</setting>
 
 // If false, characters will get a CAPTCHA windows occasionally to avoid unattended resource gathering with macros.
 
@@ -112,7 +112,7 @@
 
 // The gold reward from bulletin board quests is modified below between 50 and 250 percent.
 
-<setting>150</setting>
+<setting>250</setting>
 
 // This setting between 0.5 and 2.0 (decimal format) will give a character that much hit points, mana, or stamina based on the attribute. So a strength of 100 will give a character 200 hit points if this is set at 2.0.
 
@@ -157,14 +157,14 @@
 // If true, then dungeon environments will have random sounds as you traverse the corridors.
 
 <setting>true</setting>
-
-// Percent chance (whole number) that a vendor sells a common item.
-
-<setting>50</setting>
-
+	
 // Percent chance (whole number) that a vendor sells a very common item.
 
 <setting>80</setting>
+	
+// Percent chance (whole number) that a vendor sells a common item.
+
+<setting>50</setting>
 
 // Percent chance (whole number) that a vendor sells a rare item.
 
@@ -260,7 +260,7 @@
 
 // The below setting is the number of minutes that a player character bones will decay. This option, as well as the option above, could potentially be used to have player character corpses remain longer or for a more difficult style of play where the corpse and belongings vanish immediatley. If running a multiplayer game, where PVP is promoted and you want to use a more difficult style of play, then setting these two combined minutes to something long enough for an enemy player to take the dead character's belongings may be desired. The default is 110 minutes.
 
-<setting>960</setting>
+<setting>1920</setting>
 
 // If true, then co-owners of houses will have the same permissions as owners. The security choice gump will then specify this dual ownership when choosing an item security level. The default setting is false, where co-owners have much more limited permissions as the standard game allows.
 
@@ -280,7 +280,7 @@
 
 // This setting is the number of days a character must exist before a player can delete them.
 
-<setting>7.0</setting>
+<setting>0.1</setting>
 
 // If true, players can just type in a name and password and it will create an account for them.
 
@@ -337,11 +337,11 @@
 
 // This value is between 0 and 10, where you can set the amount of extra GM skill points characters get. So if you set it to '2' then characters get 200 (2 x 100) more skills points available.
 
-<setting>5</setting>
+<setting>0</setting>
 
 // This number can be set from zero to 10, where 10 will give characters faster skill gain and zero leaves it normal (default).
 
-<setting>4</setting>
+<setting>5</setting>
 
 // This number can be set from 5 to 60, which determines the number of minutes that hunger and thirst are checked for reduction (default is 5).
 

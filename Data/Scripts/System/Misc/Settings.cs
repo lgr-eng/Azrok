@@ -1400,13 +1400,13 @@ namespace Server.Misc
             pm.SkillBoost = SkillBoost();
 
             if (area == "savage")
-                pm.SkillStart = 11000;
+                pm.SkillStart = 16000;
             else if (area == "alien")
                 pm.SkillStart = 40000;
             else if (area == "fugitive")
-                pm.SkillStart = 13000;
+                pm.SkillStart = 18000;
             else
-                pm.SkillStart = 10000;
+                pm.SkillStart = 15000;
 
             pm.Skills.Cap = pm.SkillStart + pm.SkillBoost + pm.SkillEther;
         }

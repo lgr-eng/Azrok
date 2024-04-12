@@ -204,6 +204,21 @@ namespace Server.Mobiles
         private List<Mobile> m_AllFollowers;
         private List<Mobile> m_RecentlyReported;
 
+        //Combat Log Edits
+        private string[] m_CombatLog = new string[10];
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string[] CombatLog
+        {
+            get { return m_CombatLog; }
+            set
+            {
+                m_CombatLog = value;
+                InvalidateProperties();
+            }
+        }
+        //End Combag Log Edits
+
         // Start FSGov Edits
 
         private CityManagementStone m_City;
@@ -1720,135 +1735,6 @@ namespace Server.Mobiles
             return true;
         }
 
-        public static void SkillVerification(Mobile m)
-        {
-            PlayerMobile pm = m as PlayerMobile;
-            if (pm != null && pm.AccessLevel < AccessLevel.Counselor)
-            {
-                bool adjust = true;
-
-                int record = pm.Skill_Start + pm.Skill_Boost + pm.Skill_Ether;
-
-                if (
-                    (m.Skills.Cap == 18000 || m.Skills.Cap == 23000)
-                    && m.SkillsTotal <= m.Skills.Cap
-                )
-                {
-                    if (((PlayerMobile)m).Profession == 1)
-                    {
-                        if (record != m.Skills.Cap)
-                        {
-                            pm.Skill_Start = 18000;
-
-                            if (m.Skills.Cap == 23000)
-                            {
-                                pm.Skill_Ether = 5000;
-                            }
-                        }
-
-                        adjust = false;
-                    }
-                    else if (Server.Misc.PlayerSettings.GetKeys(m, "Virtue"))
-                    {
-                        if (record != m.Skills.Cap)
-                        {
-                            pm.Skill_Start = 18000;
-
-                            if (m.Skills.Cap == 23000)
-                            {
-                                pm.Skill_Ether = 5000;
-                            }
-                        }
-
-                        adjust = false;
-                    }
-                }
-                else if (
-                    (m.Skills.Cap == 40000 || m.Skills.Cap == 45000)
-                    && m.SkillsTotal <= m.Skills.Cap
-                )
-                {
-                    ((PlayerMobile)m).Profession = 0;
-
-                    if (record != m.Skills.Cap)
-                    {
-                        pm.Skill_Start = 40000;
-
-                        if (m.Skills.Cap == 45000)
-                        {
-                            pm.Skill_Ether = 5000;
-                        }
-                    }
-
-                    adjust = false;
-                }
-                else if (
-                    (m.Skills.Cap == 15000 || m.Skills.Cap == 20000)
-                    && m.SkillsTotal <= m.Skills.Cap
-                )
-                {
-                    ((PlayerMobile)m).Profession = 0;
-
-                    if (record != m.Skills.Cap)
-                    {
-                        pm.Skill_Start = 15000;
-
-                        if (m.Skills.Cap == 20000)
-                        {
-                            pm.Skill_Ether = 5000;
-                        }
-                    }
-
-                    adjust = false;
-                }
-                else if (
-                    (m.Skills.Cap == 16000 || m.Skills.Cap == 21000)
-                    && m.SkillsTotal <= m.Skills.Cap
-                )
-                {
-                    ((PlayerMobile)m).Profession = 0;
-
-                    if (record != m.Skills.Cap)
-                    {
-                        pm.Skill_Start = 16000;
-
-                        if (m.Skills.Cap == 21000)
-                        {
-                            pm.Skill_Ether = 5000;
-                        }
-                    }
-
-                    adjust = false;
-                }
-
-                if (adjust)
-                {
-                    Server.Misc.MyServerSettings.SkillBegin("default", pm);
-                    pm.Profession = 0;
-                    for (int i = 0; i < pm.Skills.Length; i++)
-                    {
-                        Skill skill = pm.Skills[i];
-                        skill.Base = 0;
-                    }
-
-                    if (pm.Skill_Ether != 5000 && m.StatCap != 250)
-                    {
-                        m.StatCap = 250;
-                        m.RawStr = 20;
-                        m.RawInt = 20;
-                        m.RawDex = 20;
-                    }
-                    else if (pm.Skill_Ether == 5000 && m.StatCap != 300)
-                    {
-                        m.StatCap = 300;
-                        m.RawStr = 20;
-                        m.RawInt = 20;
-                        m.RawDex = 20;
-                    }
-                }
-            }
-        }
-
         public override bool CheckMovement(Direction d, out int newZ)
         {
             DesignContext context = m_DesignContext;
@@ -2803,8 +2689,30 @@ namespace Server.Mobiles
             base.OnBeneficialAction(target, isCriminal);
         }
 
+        private void PlayerCommandCombatLogUpdate (int amount, Mobile from)
+        {
+            // Find the first empty index in the CombatLog array
+            int indexToUpdate = Array.FindIndex(CombatLog, entry => entry == null);
+
+            if (indexToUpdate == -1)
+            {
+                // If no null entries are found, the array is full and we need to shift the entries
+                for (int i = 0; i < CombatLog.Length - 1; i++)
+                {
+                    CombatLog[i] = CombatLog[i + 1]; // Shift each entry one position left
+                }
+
+                // Update the last position with the new log entry
+                indexToUpdate = CombatLog.Length - 1;
+            }
+
+            // Update the determined position with the new log entry
+            CombatLog[indexToUpdate] = "Damage Taken = " + amount.ToString() + " From = " + from.ToString();
+        }
+
         public override void OnDamage(int amount, Mobile from, bool willKill)
         {
+            PlayerCommandCombatLogUpdate(amount, from);
             CombatLogging.LogDamageTaken(this, amount, from, this.Location.ToString(), Server.Misc.Worlds.GetRegionName(this.Map, this.Location));
 
             int disruptThreshold;

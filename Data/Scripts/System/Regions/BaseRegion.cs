@@ -251,8 +251,6 @@ namespace Server.Regions
                         m.Kills = 1;
                     }
                 }
-
-                //PlayerMobile.SkillVerification(m);
             }
         }
 

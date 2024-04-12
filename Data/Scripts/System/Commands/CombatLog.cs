@@ -23,8 +23,6 @@ namespace Server.Commands
 
         public static void Initialize()
         {
-            EventSink.Command += new CommandEventHandler(EventSink_Command);
-
             if (!Directory.Exists("Data/Logs"))
                 Directory.CreateDirectory("Data/Logs");
 
@@ -154,23 +152,11 @@ namespace Server.Commands
             return sb.ToString();
         }
 
-        public static void EventSink_Command(CommandEventArgs e)
-        {
-            WriteLine(
-                e.Mobile,
-                "{0} {1} used command '{2} {3}'",
-                e.Mobile.AccessLevel,
-                Format(e.Mobile),
-                e.Command,
-                e.ArgString
-            );
-        }
-
         public static void LogDamageTaken(Mobile from, int amount, Mobile source, string location, string map)
         {
             WriteLine(
                 from,
-                "{0} {1} {2} {3} {4}",
+                "Character = {0} Damage Taken = {1} Source = {2} At Coordinates = {3} In the map {4}",
                 from,
                 amount,
                 source,
