@@ -2706,8 +2706,10 @@ namespace Server.Mobiles
                 indexToUpdate = CombatLog.Length - 1;
             }
 
-            // Update the determined position with the new log entry
-            CombatLog[indexToUpdate] = "Damage Taken = " + amount.ToString() + " From = " + from.ToString();
+            if (from != null)
+                CombatLog[indexToUpdate] = "Damage Taken = " + amount.ToString() + " From = " + from.ToString();
+            else
+                CombatLog[indexToUpdate] = "Damage Taken = " + amount.ToString() + " From = NULL" ;
         }
 
         public override void OnDamage(int amount, Mobile from, bool willKill)
