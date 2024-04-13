@@ -53,7 +53,7 @@ namespace Server.Items
             if (box != null && IsChildOf(box))
             {
                 Delete();
-                int nRate = 5;
+                int nRate = 4;
 
                 int nCoins = this.Amount;
                 int nGold = (int)Math.Floor((decimal)(this.Amount / nRate));
@@ -148,7 +148,7 @@ namespace Server.Items
             if (box != null && IsChildOf(box))
             {
                 Delete();
-                int nRate = 2;
+                int nRate = 3;
 
                 int nCoins = this.Amount;
                 int nGold = (int)Math.Floor((decimal)(this.Amount / nRate));

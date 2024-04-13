@@ -5473,75 +5473,40 @@ namespace Server.Mobiles
                         m_Coins = cashgrab;
                         m_CoinType = "gold";
 
-                        cashgrab = cashgrab * 10;
+                        cashgrab *= 10;  // Increase the base cash
 
-                        if (Utility.RandomMinMax(1, 100) > 99)
+                        var lootConfigurations = new[]
                         {
-                            int nGm = 20;
-                            int nGms = (int)Math.Floor((decimal)(cashgrab / nGm));
-                            if (nGms > 0)
+                            new { Threshold = 95, Cost = 20, ItemType = typeof(DDGemstones) },
+                            new { Threshold = 90, Cost = 10, ItemType = typeof(DDGoldNuggets) },
+                            new { Threshold = 50, Cost = 10, ItemType = typeof(Gold) },
+                            new { Threshold = 5, Cost = 5, ItemType = typeof(DDSilver) }
+                        };
+
+                        foreach (var config in lootConfigurations)
+                        {
+                            if (random.Next(1, 101) > config.Threshold)
                             {
-                                int nGemstones = Utility.RandomMinMax(1, nGms);
-                                if (nGemstones < 10)
+                                int maxItems = cashgrab / config.Cost;
+                                if (maxItems > 0)
                                 {
-                                    nGemstones = Utility.RandomMinMax(10, 15);
+                                    int itemCount = AdjustedRandomCount(1, maxItems);
+                                    var item = Activator.CreateInstance(config.ItemType, itemCount) as Server.Item;
+                                    PackItem(item);
+                                    cashgrab -= itemCount * config.Cost;
                                 }
-                                PackItem(new DDGemstones(nGemstones));
-                                cashgrab = cashgrab - (nGemstones * nGm);
                             }
                         }
-                        if (Utility.RandomMinMax(1, 100) > 95)
-                        {
-                            int nGs = 10;
-                            int nGps = (int)Math.Floor((decimal)(cashgrab / nGs));
-                            if (nGps > 0)
-                            {
-                                int nNuggets = Utility.RandomMinMax(1, nGps);
-                                if (nNuggets < 10)
-                                {
-                                    nNuggets = Utility.RandomMinMax(10, 15);
-                                }
-                                PackItem(new DDGoldNuggets(nNuggets));
-                                cashgrab = cashgrab - (nNuggets * nGs);
-                            }
-                        }
-                        if (Utility.RandomMinMax(1, 100) > 66)
-                        {
-                            int nGp = 10;
-                            int nGpp = (int)Math.Floor((decimal)(cashgrab / nGp));
-                            if (nGpp > 0)
-                            {
-                                int nGold = Utility.RandomMinMax(1, nGpp);
-                                if (nGold < 10)
-                                {
-                                    nGold = Utility.RandomMinMax(10, 15);
-                                }
-                                PackItem(new Gold(nGold));
-                                cashgrab = cashgrab - (nGold * nGp);
-                            }
-                        }
-                        if (Utility.RandomMinMax(1, 100) > 33)
-                        {
-                            int nSp = 5;
-                            int nSpp = (int)Math.Floor((decimal)(cashgrab / nSp));
-                            if (nSpp > 0)
-                            {
-                                int nSilver = Utility.RandomMinMax(1, nSpp);
-                                if (nSilver < 10)
-                                {
-                                    nSilver = Utility.RandomMinMax(10, 15);
-                                }
-                                PackItem(new DDSilver(nSilver));
-                                cashgrab = cashgrab - (nSilver * nSp);
-                            }
-                        }
+
                         if (cashgrab > 0)
                         {
                             if (cashgrab < 10)
                             {
-                                cashgrab = Utility.RandomMinMax(10, 15);
+                                cashgrab = random.Next(10, 16);
                             }
-                            PackItem(new DDCopper(cashgrab));
+                            PackItem(new DDSilver(cashgrab / 5));
+                            cashgrab -= (cashgrab / 5);
+                            PackItem(new DDCopper(cashgrab / 2));
                         }
                     }
                 }
@@ -5554,6 +5519,18 @@ namespace Server.Mobiles
 
             NameColor();
             ProcessClothing();
+        }
+
+        private static Random random = new Random();
+
+        private static int AdjustedRandomCount(int minValue, int maxValue)
+        {
+            int count = random.Next(minValue, maxValue + 1);
+            if (count < 10)
+            {
+                count = random.Next(10, 16);
+            }
+            return count;
         }
 
         public override ApplyPoisonResult ApplyPoison(Mobile from, Poison poison)
