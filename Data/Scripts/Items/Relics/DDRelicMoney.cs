@@ -6,7 +6,7 @@ namespace Server.Items
     {
         public override double DefaultWeight
         {
-            get { return (Core.ML ? (0.02 / 3) : 0.02); }
+            get { return (Core.ML ? (0.005 / 3) : 0.005); }
         }
 
         [Constructable]
@@ -53,7 +53,7 @@ namespace Server.Items
             if (box != null && IsChildOf(box))
             {
                 Delete();
-                int nRate = 4;
+                int nRate = 5;
 
                 int nCoins = this.Amount;
                 int nGold = (int)Math.Floor((decimal)(this.Amount / nRate));
@@ -101,7 +101,7 @@ namespace Server.Items
     {
         public override double DefaultWeight
         {
-            get { return (Core.ML ? (0.02 / 3) : 0.02); }
+            get { return (Core.ML ? (0.005 / 3) : 0.005); }
         }
 
         [Constructable]
@@ -196,7 +196,7 @@ namespace Server.Items
     {
         public override double DefaultWeight
         {
-            get { return (Core.ML ? (0.02 / 3) : 0.02); }
+            get { return (Core.ML ? (0.01 / 3) : 0.01); }
         }
 
         [Constructable]
@@ -265,7 +265,7 @@ namespace Server.Items
     {
         public override double DefaultWeight
         {
-            get { return (Core.ML ? (0.02 / 3) : 0.02); }
+            get { return (Core.ML ? (0.01 / 3) : 0.01); }
         }
 
         [Constructable]
@@ -335,7 +335,7 @@ namespace Server.Items
     {
         public override double DefaultWeight
         {
-            get { return (Core.ML ? (0.02 / 3) : 0.02); }
+            get { return (Core.ML ? (0.01 / 3) : 0.01); }
         }
 
         [Constructable]
@@ -404,7 +404,7 @@ namespace Server.Items
     {
         public override double DefaultWeight
         {
-            get { return (Core.ML ? (0.02 / 3) : 0.02); }
+            get { return (Core.ML ? (0.01 / 3) : 0.01); }
         }
 
         [Constructable]
