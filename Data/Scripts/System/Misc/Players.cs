@@ -1571,7 +1571,7 @@ namespace Server.Gumps
 
             int LRCCap = 100;
             int LMCCap = 40;
-            double BandageSpeedCap = 5.0;
+            double BandageSpeedCap = 2.0;
             int SwingSpeedCap = 100;
             int HCICap = 45;
             int DCICap = 45;
@@ -1598,9 +1598,9 @@ namespace Server.Gumps
                     ? LMCCap
                     : AosAttributes.GetValue(from, AosAttribute.LowerManaCost);
             double BandageSpeed =
-                (5.0 + (0.5 * ((double)(120 - from.Dex) / 10))) < BandageSpeedCap
+                (2.0 + (0.5 * ((double)(120 - dex) / 10))) < BandageSpeedCap
                     ? BandageSpeedCap
-                    : (5.0 + (0.5 * ((double)(120 - from.Dex) / 10)));
+                    : (2.0 + (0.5 * ((double)(120 - dex) / 10)));
             TimeSpan SwingSpeed =
                 (from.Weapon as BaseWeapon).GetDelay(from) > TimeSpan.FromSeconds(SwingSpeedCap)
                     ? TimeSpan.FromSeconds(SwingSpeedCap)
