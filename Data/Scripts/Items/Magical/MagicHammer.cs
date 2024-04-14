@@ -142,6 +142,19 @@ namespace Server.Items
                         }
                         else if (iWear.ItemID == 0xE89 || iWear.ItemID == 0xE8A)
                         {
+                            iWear.ItemID = 0x2AAC;
+                        }
+
+                        else if (iWear.ItemID == 0x2AAC)
+                        {
+                            iWear.ItemID = 0x63B1;
+                        }
+                        else if (iWear.ItemID == 0x63B1)
+                        {
+                            iWear.ItemID = 0x6522;
+                        }
+                        else if (iWear.ItemID == 0x6522)
+                        {
                             iWear.ItemID = 0x0908;
                         }
 
