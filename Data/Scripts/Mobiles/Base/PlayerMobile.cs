@@ -2689,6 +2689,22 @@ namespace Server.Mobiles
             base.OnBeneficialAction(target, isCriminal);
         }
 
+        private static string ExtractAttackerName(Mobile mobile)
+        {
+            string result = mobile.ToString();
+            int quotePosition = result.IndexOf('\"');
+            if (quotePosition != -1)
+            {
+                result = result.Substring(quotePosition + 1);
+                quotePosition = result.IndexOf('\"');
+                if (quotePosition != -1)
+                {
+                    result = result.Substring(0, quotePosition);
+                }
+            }
+            return result;
+        }
+
         private void PlayerCommandCombatLogUpdate (int amount, Mobile from)
         {
             // Find the first empty index in the CombatLog array
@@ -2707,7 +2723,7 @@ namespace Server.Mobiles
             }
 
             if (from != null)
-                CombatLog[indexToUpdate] = "Damage Taken = " + amount.ToString() + " From = " + from.ToString();
+                CombatLog[indexToUpdate] = "Damage Taken = " + amount.ToString() + " From = " + ExtractAttackerName(from);
             else
                 CombatLog[indexToUpdate] = "Damage Taken = " + amount.ToString() + " From = NULL" ;
         }
@@ -2715,7 +2731,7 @@ namespace Server.Mobiles
         public override void OnDamage(int amount, Mobile from, bool willKill)
         {
             PlayerCommandCombatLogUpdate(amount, from);
-            CombatLogging.LogDamageTaken(this, amount, from, this.Location.ToString(), Server.Misc.Worlds.GetRegionName(this.Map, this.Location));
+            CombatLogging.LogDamageTaken(this, amount, from, this.Location.ToString(), this.Map.ToString(), Server.Misc.Worlds.GetRegionName(this.Map, this.Location));
 
             int disruptThreshold;
 
