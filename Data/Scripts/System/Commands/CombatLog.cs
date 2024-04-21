@@ -105,6 +105,9 @@ namespace Server.Commands
 
         private static string ExtractAttackerName(Mobile mobile)
         {
+            if (mobile == null)
+                return "Null";
+
             string result = mobile.ToString();
             int quotePosition = result.IndexOf('\"');
             if (quotePosition != -1)
